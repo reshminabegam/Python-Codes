@@ -1,0 +1,641 @@
+sum of n natural number
+def sum_of_even_nat(n):
+    sum=0
+    for i in range(2,2*n+1,2):
+        sum+=i
+    return sum
+n=int(input())
+print(sum_of_even_nat(n))
+
+
+
+find prime number in given range
+def is_prime(num):
+    if num==1 and num<1:
+        return False
+    for i in range(2,num):
+        if i%2==0:
+            return False
+    return True
+def find_prime(s,e):
+    a=[]
+    for num in range(s,e+1):
+        if is_prime(num):
+            a.append(num)
+    return a
+
+s=int(input())
+e=int(input())
+print(find_prime(s,e))'''
+
+
+'''Automorphic number''
+def automorphic_no(n):
+    sqr=n**2
+    a=str(n)
+    sq_str=str(sqr)
+    return sq_str.endswith(a)
+n=int(input())
+print(automorphic_no(n))
+
+
+'''fibonacci series'''
+n=int(input())
+a=0
+b=1
+print(a,b,end=' ')
+for i in range(2,n):
+    c=a+b
+    a=b
+    b=c
+    print(c,end=' ')
+print()'''
+
+
+'''Armstrong number'''
+'''def armstrong(n):
+    a=str(n)
+    b=len(a)
+    sum=0
+    for i in a:
+        sum+=int(i)**b
+    return sum==n
+n=int(input())
+print(armstrong(n))'''
+
+
+'''Adam number
+def adam_or_not(n):
+    a=n**2
+    b=int(str(a)[::-1])
+    c=int(str(n)[::-1])**2
+    return b==c
+n=int(input())
+print(adam_or_not(n))'''
+
+
+'''happy number'''
+'''def happy(n):
+    s=str(n)
+    count=0
+    for i in s:
+      count+=int(i)**2
+      if count==1:
+        return True
+    return False
+n=int(input())
+print(happy(n))
+
+
+'''magic number'''
+def magic_number(n):
+    while n>9:
+        s=str(n)
+        c=0
+        for i in s:
+            c+=int(i)
+        n=c
+    return n==1
+n=int(input())
+print(magic_number(n))
+
+
+'''reverse a number'''
+def reverse_number(num):
+    r=0
+    while num>0:
+        l=num%10
+        r=r*10+l
+        num//=10
+    return r
+num=int(input())
+print( reverse_number(num))
+
+'''count the digits for given number without builtin'''
+def count_dig(n):
+    c=0
+    while n>0:
+        c+=1
+        n//=10
+    return f"total count:{c}"
+n=int(input())
+print(count_dig(n))
+
+'''using builtin'''
+n=int(input())
+print(len(str(n)))
+
+
+'''non-repeating element'''
+def find_non_rep(arr):
+    freq={}
+    for i in arr:
+        if i in freq:
+            freq[i]+=1
+        else:
+            freq[i]=1
+    a=[]
+    for i in arr:
+        if freq[i]==1:
+            a.append(i)
+    return a
+
+arr=list(map(int,input().split()))
+r=find_non_rep(arr)
+print(r)
+
+
+
+'''subarrays'''
+def subarrays(arr):
+    n=len(arr)
+    for i in range(n):
+        for j in range(i,n):
+            subarray=arr[i:j+1]
+            print(subarray)
+arr=list(map(int,input().split()))
+print(subarrays(arr))
+
+'''subarrays total count'''
+def subarrays(arr):
+    n=len(arr)
+    c=0
+    for i in range(n):
+        for j in range(i,n):
+            subarrays=arr[i:j+1]
+            print(subarrays)
+            c+=1
+    return f"total count of subarrays:{c}"
+arr=list(map(int,input().split()))
+print(subarrays(arr))
+
+
+'''factors of list'''
+def factors(n):
+    r=[]
+    for i in range(1,n+1):
+        if n%i==0:
+            r.append(i)
+    return r
+def factors_of_list(arr):
+    for num in arr:
+        print(f"factors of {num}:{factors(num)}")
+arr=list(map(int,input().split()))
+print(factors_of_list(arr))
+
+        
+'''perferct sqaure'''
+def is_perf_sqr(n):
+    if n<0:
+        return False
+    i=0
+    while i*i<=n:
+        if i*i==n:
+            return True
+        i+=1
+    return False
+def check_sqr(arr):
+    return [i for i in arr if is_perf_sqr(i)]
+arr=list(map(int,input().split()))
+print(check_sqr(arr))
+
+
+'''palindrome or not'''
+def palindrome(a,b):
+    if len(a)!=len(b):
+        return False
+    l=len(a)
+    for i in range(l):
+        if a[i]!=b[l-1-i]:
+            return False
+    return True
+a=input()
+b=input()
+print(palindrome(a,b))
+
+
+'''get the matrix from the user'''
+def matrix():
+    r=int(input())
+    c=int(input())
+    mat=[]
+    for i in range(r):
+        r=[]
+        for j in range(c):
+            ele=int(input())
+            r.append(ele)
+        mat.append(r)
+    return mat
+def sum_diagonal_elements(mat):
+    diagonal_sum = 0
+    for i in range(len(mat)):
+        diagonal_sum += mat[i][i]
+    return diagonal_sum
+
+res=matrix()
+for r in res:
+    print(r)
+sum=sum_diagonal_elements(res)
+print(sum)
+
+
+'''kth smallest number'''
+def kthsmallest(n, a, k):
+    a.sort()
+    return a[k-1]
+
+n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+print(kthsmallest(n, a, k))
+
+
+'''. Find non-repeating characters in a string'''
+string=input()
+for i in string:
+    count=0
+    for j in string:
+        if i==j:
+            count+=1
+        if count>1:
+            break
+    if count==1:
+        print(i,end=' ')
+        
+
+
+'''kth largest number'''
+def kthlargest(n, a, k):
+    a.sort(reverse=True)
+    return a[k-1]
+
+n = int(input())
+a = list(map(int, input().split()))
+k = int(input())
+print(kthlargest(n, a, k))
+
+
+'''anagram for string'''
+def anagram(s1,s2):
+    if len(s1)!=len(s2):
+        return false
+    else:
+        s1=sorted(s1)
+        s2=sorted(s2)
+    if s1==s2:
+        return True
+    return False
+s1=input()
+s2=input()
+print(anagram(s1,s2))
+
+
+'''to find the row wise sum from the given 2D array'''
+def matrix():
+    r=int(input())
+    c=int(input())
+    mat=[]
+    for i in range(r):
+        r=[]
+        for j in range(c):
+            ele=int(input())
+            r.append(ele)
+        mat.append(r)
+    return mat
+res=matrix()
+for r in  res:
+    row_sum=0
+    for ele in r:
+        row_sum+=ele
+    print({row_sum})
+
+
+
+'''gcd'''
+def gcd(a,b):
+    if a>b:
+        small=b
+    else:
+        small=a
+    for i in range(1,small+1):
+        if (a%i==0)and(b%i==0):
+            gcd=i
+    return gcd
+a=int(input())
+b=int(input())
+print(gcd(a,b))
+
+
+'''perferct number'''
+def perf_number(n):
+    temp=0
+    for i in range(1,n):
+        if(n%i==0):
+            temp+=i
+    return temp==n
+n=int(input())
+print(perf_number(n))
+
+
+
+'''to find the prime number from the given array based on row'''
+def prime(n):
+    if n<=1:
+        return False
+    if n==2 or n==3:
+        return True
+    for i in range(2,n+1):
+        if n%2==0:
+            return False
+    return True
+        
+def matrix():
+    r=int(input())
+    c=int(input())
+    mat=[]
+    prime_count=[]
+    for i in range(r):
+        r=[]
+        p_c=0
+        for j in range(c):
+            ele=int(input())
+            r.append(ele)
+            if prime(ele):
+                p_c+=1
+        mat.append(r)
+        prime_count.append(p_c)
+    return mat,prime_count
+    
+matrix_data,row_wise_primecount=matrix()
+for i,count in enumerate(row_wise_primecount):
+    print({count})
+
+
+
+'''convert the string lowercase into uppercase and uppercase into lowercase without using builtin function'''
+def toggele_string(a):
+    t_s=""
+    for i in a:
+        if 'A'<=i<='Z':
+            t_s+=chr(ord(i)+32)
+        elif 'a'<=i<='z':
+            t_s+=chr(ord(i)-32)
+        else:
+            t_s+=i
+    return t_s
+a=input()
+print(toggele_string(a))
+
+
+'''convert the given string vowel character into uppercase'''
+def toggele_string_vowels(a):
+    vowels={'a','e','i','o','u'}
+    t_s=""
+    for i in a:
+        if i in vowels:
+            upper_char=chr(ord(i)-32)
+        else:
+            upper_char=i
+        t_s+=upper_char
+    return t_s
+a=input()
+print(toggele_string_vowels(a))
+
+
+
+'''find the odd and even count difference value'''
+def odd_even_diff(n):
+    a=[]
+    b=[]
+    for i in n:
+        if i%2==0:
+            a.append(i)
+        else:
+            b.append(i)
+    c=len(b)-len(a)
+    return f"{c}"
+n=list(map(int,input().split()))
+print(odd_even_diff(n))
+
+
+
+'''Write a program to calculate and return the sum of absolute difference between the adjacent number in an array of positive integers from the position entered by the user.
+
+Note : You are expected to write code in the findTotalSum function only which receive three positional arguments:
+
+1st : number of elements in the array
+2nd : array
+3rd : position from where the sum is to be calculated
+
+Example
+
+Input
+input 1 : 7
+input 2 : 11 22 12 24 13 26 14
+input 3 : 5
+
+Output
+25''''
+
+def findtot_pos(a,pos):
+    c=0
+    for i in range(pos-1,len(a)-1):
+        c+=abs(a[i]-a[i+1])
+    return c
+a=list(map(int,input().split()))
+pos=int(input())
+print(findtot_pos(a,pos))
+        
+
+'''Write a program to find the difference between the elements at odd index and even index.
+
+Note : You are expected to write code in the findDifference function only which receive the first parameter as the numbers of items in the array and second parameter as the array itself. You are not required to take the input from the console.
+
+Example
+
+Finding the maximum difference between adjacent items of a list of 5 numbers
+
+Input
+input 1 : 7
+input 2 : 10 20 30 40 50 60 70
+
+Output
+40'''
+
+def odd_even_diff(a):
+    t=0
+    u=0
+    for i in range(len(a)):
+        if i%2==0:
+            t+=a[i]
+        else:
+            u+=a[i]
+    c=t-u
+    return f"{c}"
+a=list(map(int,input().split()))
+print(odd_even_diff(a))
+
+
+'''A Cloth merchant has some pieces of cloth of different lengths. He has an order of curtains of length of 12 feet. He has to find how many curtains can  be made from these pieces. Length of pieces of cloth is recorded in feet.
+
+Note : You are expected to write code in the findTotalCurtains function only which receive the first parameter as the number of items in the array and second parameter as the array itself. You are not required to take the input from the console.
+
+Example
+
+Finding the total curtains from a list of 5 cloth pieces.
+
+Input
+input 1 : 5
+input 2 : 3 42 60 6 14
+
+Output
+9'''
+
+def find_total_curtains(a):
+    total=0
+    for i in a:
+        total+=i//12
+    return total
+a=list(map(int,input().split()))
+print( find_total_curtains(a))
+
+
+''''list to dictionary''''
+def list_to_dict(a):
+    k_l=["name","number"]
+    n=len(a)
+    res=[]
+    for i in range(0,n,2):
+        res.append({k_l[0]:a[i],k_l[1]:a[i+1]})
+    return res
+a=input().split()
+print(list_to_dict(a))
+'''
+
+'''MOST FREQUENCY ELEMENTS'''
+def most_freq(lst):
+    freq={}
+    max_count=0
+    most_common=lst[0]
+    for i in lst:
+        if i in freq:
+            freq[i]+=1
+        else:
+            freq[i]=1
+        if freq[i]>max_count:
+             max_count=freq[i]
+             most_common=i
+    return most_common
+lst=list(map(int,input().split()))
+print( most_freq(lst))
+
+
+
+'''PIVOT INDEX'''
+def pivot_index(lst):
+    tot_sum=0
+    for i in lst:
+        tot_sum+=i
+    l_sum=0
+    index=0
+    for i in lst:
+        if l_sum==(tot_sum-l_sum-i):
+            return index
+        l_sum+=i
+        index+=1
+    return index
+lst=list(map(int,input().split()))
+print(pivot_index(lst))
+
+
+
+'''ODD EVEN INDICES'''
+def odd_even_indices(a):
+    for i in range(len(a)):
+        if i%2==0 and a[i]%2==0:
+            return True
+        elif i%2!=0 and a[i]%2!=0:
+            return True
+        else:
+            return False
+a=list(map(int,input().split()))
+print(odd_even_indices(a))
+
+
+
+'''SUM OF ABSOLUTE DIFFERNCE BETWEEN THE ADJACENT NUMBER FROM THE GIVEN POSITION'''
+def sum_count_pos(a,pos):
+    tot=0
+    for i in range(pos-1,len(a)-1):
+        tot+=abs(a[i]-a[i+1])
+    return tot
+a=list(map(int,input().split()))
+pos=int(input())
+print( sum_count_pos(a,pos))
+
+
+
+'''TWOSUM WITH TARGET'''
+def two_sum(a,target):
+    i=0
+    j=len(a)-1
+    while i<=j:
+        s=a[i]+a[j]
+        if s==target:
+            return [i+1,j+1]
+        else:
+            if s<target:
+                i+=1
+            else:
+                j-=1
+    return [i+1,j+1]
+a=list(map(int,input().split()))
+target=int(input())
+print(two_sum(a,target))
+
+
+
+'''FIND THE DIFFERENCE BETWEEN ELEMENTS OF SUM AND DIGITS OF SUM'''
+def find_sum_digits(a):
+    ele_sum=0
+    dig_sum=0
+    for i in a:
+        ele_sum+=i
+        while i>0:
+            dig=i%10
+            dig_sum+=dig
+            i//=10
+    difference=ele_sum-dig_sum
+    return difference
+a=list(map(int,input().split()))
+print(find_sum_digits(a))
+
+
+
+'''CHECK PERFECT CUBE AND SQUARE'''
+def is_cube(n):
+    if n<0:
+        return False
+    i=0
+    while i*i*i<=n:
+        if i*i*i==n:
+            return True
+        i+=1
+    return False
+def is_square(n):
+    if n<0:
+        return False
+    i=0
+    while i*i<=n:
+        if i*i==n:
+            return True
+        i+=1
+    return False
+def is_cube_sqr(lst):
+    return [i for i in lst if is_cube(i)or is_square(i)]
+lst=list(map(int,input().split()))
+print(is_cube_sqr(lst))
+
+
+
+
